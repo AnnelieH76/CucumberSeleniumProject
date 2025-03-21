@@ -49,9 +49,4 @@ public class stepDefsAdd {
         assertEquals(Integer.toString(expected), actual);
     }
 
-    @After
-    public static void tearDown(){
-        driver.quit();
-    }
-
 }
