@@ -6,12 +6,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class StepsCalculator {
+public class calculatorStepDef {
     private Calculator calculator;
 
-    @Given("I have two numbers {int} and {int}")
-    public void iHaveTwoNumbersAnd(int first, int second) {
-
+    @Given("I have two numbers {double} and {double}")
+    public void iHaveTwoNumbersAnd(double first, double second) {
         calculator = new Calculator(first, second);
         System.out.println("I have two numbers");
     }
@@ -22,9 +21,18 @@ public class StepsCalculator {
         System.out.println("Adding numbers");
     }
 
-    @Then("I get the result {int}")
-    public void iGetTheResult(int expected) {
-        int actual= calculator.getResult();
+    @When("I subtract the two numbers")
+    public void iSubtractTheTwoNumbers() {
+        calculator.sub();
+    }
+
+    @Then("I get a {double}")
+    public void iGetTheResult(double expected) {
+        double actual= calculator.getResult();
+        System.out.println("Resultatet är: " + actual);
         assertEquals(expected,actual);
     }
+
+
 }
+

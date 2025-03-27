@@ -1,21 +1,26 @@
 package common;
 
 public class Calculator {
-    private int first;
-    private int second;
-    private int result;
+    private double first;
+    private double second;
+    private double result;
 
-    public Calculator (int first, int second){
+    public Calculator (double first, double second){
         this.first = first;
         this.second = second;
-
     }
 
     public void add() {
         result = first + second;
     }
 
-    public int getResult() {
+    public void sub() {
+        result = first - second;
+    }
+
+    public double getResult() {
         return result;
     }
+
+
 }

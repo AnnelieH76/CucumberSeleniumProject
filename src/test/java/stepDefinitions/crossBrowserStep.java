@@ -1,6 +1,5 @@
 package stepDefinitions;
 
-import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,17 +8,26 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class stepDefsAdd {
+public class crossBrowserStep {
 
     private static WebDriver driver;
 
+    @Given("I am using {string} as browser")
+    public void iAmUsingAsBrowser(String browser) {
+        if (browser.equals("edge")) {
+            driver = new EdgeDriver();
+        } else {
+            driver = new ChromeDriver();
+        }
+        driver.get("https://www.marshu.com/articles/calculate-addition-calculator-add-two-numbers.php");
+    }
+
     @Given("I have the first number {int}")
     public void iHaveTheFirstNumber(int first) throws InterruptedException {
-        driver = new ChromeDriver();
-        driver.get("https://www.marshu.com/articles/calculate-addition-calculator-add-two-numbers.php");//gettermetod som hämtar sidan
         WebElement consentButton = driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[2]/div[2]/div[2]/button[1]/p"));
         consentButton.click();
         Thread.sleep(2000); // Vänta kort efter klicket
@@ -43,10 +51,7 @@ public class stepDefsAdd {
     public void iReceiveTheResult(int expected) {
         WebElement field = driver.findElement(By.name("answer"));
         String actual = field.getAttribute("value");
-
         System.out.println("I receive the result: " + actual);
-
         assertEquals(Integer.toString(expected), actual);
     }
-
 }
