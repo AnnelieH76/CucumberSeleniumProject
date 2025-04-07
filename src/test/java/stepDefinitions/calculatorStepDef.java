@@ -32,7 +32,6 @@ public class calculatorStepDef {
         System.out.println("Resultatet är: " + actual);
         assertEquals(expected,actual);
     }
-
-
+    //test
 }
 
