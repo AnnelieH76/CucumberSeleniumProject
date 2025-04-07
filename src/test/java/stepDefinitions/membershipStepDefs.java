@@ -51,7 +51,7 @@ public class membershipStepDefs {
 
     @And("I add email address")
     public void iAddEmailAddress() {
-        generatedEmail = "test" + System.currentTimeMillis() + "@master.com";
+        generatedEmail = "test" + System.currentTimeMillis() + "@mailnesia.com";
         driver.findElement(By.id("member_emailaddress")).sendKeys(generatedEmail);
     }
 
@@ -160,10 +160,10 @@ public class membershipStepDefs {
                 assertEquals("Basketball England Members Area", driver.getTitle());
                 break;
             case "error":
-                verifyErrorMessage();
+                verifyErrorMessage(); // Metod som kollar om rätt felmeddelande syns
                 break;
             default:
-                System.out.println("Unknown test result: " + result);
+                System.out.println("Unknown test result" ); //Obs För att skriva ut behövs även en mainmetod
         }
     }
 
@@ -175,15 +175,15 @@ public class membershipStepDefs {
     }
 
     private void verifyErrorMessage() {
-        String errorText = "";
-        if (isElementPresent(By.cssSelector("span[for='member_lastname']"))) {
-            errorText = waitForElement(By.cssSelector("span[for='member_lastname']")).getText();
+        String errorText = "";//Skapar en tom textsträng
+        if (isElementPresent(By.cssSelector("span[for='member_lastname']"))) { //Kollar om felmeddelandet för efternamn finns
+            errorText = waitForElement(By.cssSelector("span[for='member_lastname']")).getText(); //Hämtar felmeddelade-texten
             assertEquals("Last Name is required", errorText);
         } else if (isElementPresent(By.cssSelector("span[for='signupunlicenced_confirmpassword']"))) {
-            errorText = waitForElement(By.cssSelector("span[for='signupunlicenced_confirmpassword']")).getText();
+            errorText = waitForElement(By.cssSelector("span[for='signupunlicenced_confirmpassword']")).getText();//Hämtar felmeddelade-texten
             assertEquals("Password did not match", errorText);
         }
-        System.out.println("Error message: " + errorText);
+        System.out.println("Error message: " + errorText);//För att skriva ut behövs även en mainmetod
     }
 
     private WebElement waitForElement(By locator) {
@@ -192,7 +192,7 @@ public class membershipStepDefs {
 
     private boolean isElementPresent(By locator) {
         try {
-            driver.findElement(locator);
+            driver.findElement(locator);//Om meddelandet hittas, returnera true.
             return true;
         } catch (Exception e) {
             return false;
