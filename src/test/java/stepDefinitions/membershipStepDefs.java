@@ -41,12 +41,12 @@ public class membershipStepDefs {
 
     @And("I add First Name")
     public void iAddFirstName() {
-        driver.findElement(By.id("member_firstname")).sendKeys("Test");
+        driver.findElement(By.id("member_firstname")).sendKeys("TestAnna");
     }
 
     @And("I add Last Name")
     public void iAddLastName() {
-        driver.findElement(By.id("member_lastname")).sendKeys("Master");
+        driver.findElement(By.id("member_lastname")).sendKeys("Testsson");
     }
 
     @And("I add email address")

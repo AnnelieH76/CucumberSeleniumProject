@@ -18,7 +18,7 @@ Feature: Membership
 
 
   Scenario:  Create an account, last name missing
-    Given I have used "edge" to navigate to website basketball england membership
+    Given I have used "chrome" to navigate to website basketball england membership
     When I add date of birth
     And I add First Name
     #And I add Last Name
